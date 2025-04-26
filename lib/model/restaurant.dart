@@ -41,4 +41,9 @@ class Restaurant {
       categories: List<String>.from(map['categories']),
     );
   }
+
+  @override
+  String toString() {
+    return 'Restaurant{id: $id, imagePath: $imagePath, name: $name, description: $description, stars: $stars, distance: $distance, categories: $categories}';
+  }
 }
