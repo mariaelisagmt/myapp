@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/model/dish.dart';
 import 'package:myapp/model/restaurant.dart';
+import 'package:myapp/ui/_core/widgets/app_bar.dart';
 
 class RestaurantScreen extends StatelessWidget {
   final Restaurant restaurant;
@@ -9,7 +10,7 @@ class RestaurantScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(restaurant.name)),
+      appBar: getAppBar(context: context, title: restaurant.name),
       body: Center(
         child: Column(
           spacing: 12,
@@ -24,9 +25,14 @@ class RestaurantScreen extends StatelessWidget {
               children: List.generate(restaurant.dishes.length, (index) {
                 Dish dish = restaurant.dishes[index];
                 return ListTile(
-                  leading: Image.asset('assets/${dish.imagePath}', width: 48),
+                  leading: Image.asset(
+                    'assets/dishes/default.png',
+                    width: 48,
+                    height: 58,
+                  ),
                   title: Text(dish.name),
                   subtitle: Text("R\$${dish.price.toStringAsFixed(2)}"),
+                  trailing: IconButton(onPressed: () {}, icon: Icon(Icons.add)),
                 );
               }),
             ),
